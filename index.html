@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>主页</title>
+	<link rel="stylesheet" type="text/css" href="style/normalize.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="标签页组件/style.css">
+    <link rel="stylesheet" href="下拉菜单组件/style.css">
+</head>
+<body>
+	<header>
+		<div class="header-connect-all">
+			<div class="header-connect">
+				<p>Phone number:110</p>
+			</div>
+            <div class="header-connect">
+			    <p>Address:mars</p>
+			</div>
+		</div>
+        <div id="time">
+            {{ date | formateDate }}
+        </div>
+        <script src="script/time.js"></script>
+		<nav class="header-nav">
+            <hr>
+			<ul>
+				<li><a class="disabled btn" href="introduce.html">介绍(NO)</a></li>|
+				<li><a class="btn" href="note.html">笔记(YES)</a></li>|
+				<li><a href="index.html"><img class="header-nav-img" src="images/ama.jpeg"></a></li>|
+				<li><a class="disabled btn" href="car.html">GG car(NO)</a></li>|
+				<li><a class="disabled btn" href="game.html">A.M.A game(NO)</a></li>
+			</ul>
+		</nav>
+	</header>
+    <div class="wheel">
+    </div>
+    <div class="framework">
+        <div class="framework-vue">
+            <div class="row">
+                <div class="col-md-3"><img src="images/vue.jpg"></div>
+                <div class="col-md-6"><h3>网站前端使用vue.js搭建，vue.js是渐进式JavaScript框架,当然也使用了万能的Bootstrap，比如这里的栅格系统2：6：3，左上角时间，下面的字体颜色和大小，以及最后的表格都由vue进行渲染</h3></div>
+                <div class="col-md-3"><img src="images/bootstrap.png"></div>
+            </div>
+        </div>
+        <div class="framework-django">
+            <div class="row">
+                <div class="col-md-3"><img src="images/python.jpg"></div>
+                <div class="col-md-6"><h3>网站后端使用python-django框架搭建,其实还没有搭建，只有服务器环境，后台没有写，计划先把前端框架模板搭好再进行后端开发，计划有变，具体情况参见笔记页面</h3></div>
+                <div class="col-md-3"><img src="images/django.png"></div>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <h1>学习成果<small>一些demo</small></h1>
+    </div>
+    <div class="demo">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="cssChange">
+                    <div :style="styles">改变颜色和字体大小,采用数据双向绑定，直接在下方输入或在开发者工具控制栏中改变color或fontSize的值，字体和颜色就会改变</div>
+                    <div class="input">
+                        <p>color:<input v-model="styles.color"></p>
+                        <p>size:<input v-model="styles.fontSize"></p>
+                    </div>
+                    <script src="script/cssChange.js"></script>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="shopcar">
+                    计算属性的应用
+                    <template v-if="list.length" v-cloak>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>商品名称</th>
+                                <th>商品单价</th>
+                                <th>商品数量</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(item, index) in list">
+                                <td>{{ index + 1 }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>
+                                    <button @click="handleReduce(index)" :disabled = "item.count === 1">-</button>
+                                    {{item.count}}
+                                    <button @click="handleAdd(index)">+</button>
+                                </td>
+                                <td>
+                                    <button @click="handleRemove(index)">移除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div>总价：￥{{ totalPrice }}</div>
+                    </template>
+                    <div v-else>购物车为空</div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+                <script src="script/index.js"></script>
+            </div>
+            <div class="col-md-4">
+                <p>两个增量选择，范围0-100</p>
+                <div id="app">
+                    <input-number v-model="value" :max="100" :min="0"></input-number>
+                    <h1>数值：{{ value }}</h1>
+                </div>
+                <script src="数字输入框组件/input-number.js"></script>
+                <script src="数字输入框组件/index.js"></script>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-6" style="height: 200px">
+                <h3>一个tab标签页</h3>
+                <div id="app1" v-cloak>
+                    <tabs v-model="activeKey">
+                        <pane label="标签一" name="1">
+                            标签一的内容
+                        </pane>
+                        <pane label="标签二" name="2">
+                            标签二的内容
+                        </pane>
+                        <pane label="标签三" name="3">
+                            标签三的内容
+                        </pane>
+                    </tabs>
+                </div>
+                <script src="标签页组件/pane.js"></script>
+                <script src="标签页组件/tabs.js"></script>
+                <script type="text/javascript">
+                    var app = new Vue({
+                        el: '#app1',
+                        data:{
+                            activeKey:'1'
+                        }
+                    })
+                </script>
+            </div>
+            <div class="col-md-2">
+                <h3>一个下拉菜单</h3>
+                <div id="app2" v-cloak>
+                    <div class="main" v-clickoutside="handleClose">
+                        <button class="btn-drop" @click="show = !show">点击显示下拉菜单</button>
+                        <div class="dropdown" v-show="show">
+                            <p>下拉框的内容，点击外面区域可关闭</p>
+                        </div>
+                    </div>
+                </div>
+                <script src="下拉菜单组件/clickoutside.js"></script>
+                <script src="下拉菜单组件/index.js"></script>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <footer>
+        <ul class="share-group">
+            <li>没有了</li>
+        </ul>
+        <div class="copy">
+            &copy YouQuan 2017-2018
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <script>
+        Vue.component('my-component',{
+           template: '<button @click="counter++">{{ counter }}</button>',
+            data: function () {
+                return{
+                    counter: 0
+                };
+            }
+        });
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

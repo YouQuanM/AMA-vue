@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style/style-note.css">
+    <link rel="stylesheet" type="text/css" href="style/normalize.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-connect-all">
+            <div class="header-connect">
+                <p>Phone number:110</p>
+            </div>
+            <div class="header-connect">
+                <p>Address:mars</p>
+            </div>
+        </div>
+        <div id="time">
+            {{ date | formateDate }}
+        </div>
+        <script src="script/time.js"></script>
+        <nav class="header-nav">
+            <hr>
+            <ul>
+                <li><a class="disabled btn" href="introduce.html">介绍(NO)</a></li>|
+                <li><a class="btn" href="note.html">笔记(YES)</a></li>|
+                <li><a href="index.html"><img class="header-nav-img" src="images/ama.jpeg"></a></li>|
+                <li><a class="disabled btn" href="car.html">GG car(NO)</a></li>|
+                <li><a class="disabled btn" href="game.html">A.M.A game(NO)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="note">
+        <h3>1-17</h3>
+        <p>本来计划为先建立前端，但是发现和后端的配合还需要懂一些后端知识，决定先把django的框架建立。</p>
+        <p>进度：慕课网学习python和django入门，预计明后两天把本地django环境搭建好并建立简单的blog</p>
+        <h3>1-18</h3>
+        <p>已经初步完成本地django博客环境搭建，晚上完善一下页面样式</p>
+        <h3>1-19</h3>
+        <p>nothing</p>
+        <h3>1-20</h3>
+        <p>vue组件化学习</p>
+        <h3>1-21</h3>
+        <p>i-view牛逼，继续vue学习，制作两个常用组件，数字输入框和标签页，添加到首页中，优化首页样式，做了两个背景图 over</p>
+        <h3>1-22</h3>
+        <p>制作下拉菜单组件，明天开始进阶篇。* www.canva.com 在线设计网站</p>
+    </div>
+</body>
+</html>
